@@ -1,0 +1,23 @@
+kind: Deployment
+
+apiversion: apps/v1
+
+metadata:
+   name: devops
+
+spec:
+   replicas:2
+   selector:  #tells the controller which pods to watch/belong to 
+    matchLabels:
+     app: devops
+   template:
+      metadata:
+       labels:
+         app: devops
+      spec:
+       containers:
+      - name: devops
+        image: vikashashoke/pipeline-demo
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 80
